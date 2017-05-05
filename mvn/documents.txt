@@ -1,0 +1,5 @@
+命令行上传jar包至maven私服
+
+mvn deploy:deploy-file  -DgroupId=${groupId} -DartifactId=${artifactId} -Dpackaging=${package_type}  -Dversion=${version} \
+-Dfile=${WORKSPACE}/package/${package_name} -DgeneratePom=false -DrepositoryId="thirdparty" \
+-Durl=http://172.18.124.62:8081/nexus/content/repositories/thirdparty  -s /var/data/jenkins/.m2/settings_platform.xml
