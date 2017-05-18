@@ -1,0 +1,89 @@
+1.安装前准备
+
+可以参考svn的官方安装文档
+
+https://ctf.open.collab.net/sf/wiki/do/viewPage/projects.svnedge/wiki/LinuxInstaller
+
+安装前系统检查：java6及以上、python必须安装，java home必须设置（例如）：
+
+export JAVA_HOME=/usr/lib/jvm/java-1.6.0-sun
+
+ 
+
+2.安装
+
+注意：安装时请使用普通用户，不要使用root用户安装，不要使用sudo
+
+创建一个csvnuser用户
+
+         $ useradd csvnuser  #建议创建一个普通用户
+
+         $ passwd csvnuser   #设置普通用户密码
+
+         $ su csvnuser         #切换用户到csvnuser
+
+         $ cd ~
+
+         $ mkdir u1
+
+         $ sudo chmod a+rw u1 
+
+        
+
+  #下载安装包,并解压   
+
+  $ tar -zxf CollabNetSubversionEdge-1.0.0_linux-x86.tar.gz ~/u1
+
+3.启动服务
+
+#启动console
+
+$ cd csvn
+
+$ bin/csvn start
+
+#  It'll take a minute for the application to start. You should be able to access it from a web browser at:
+
+#  http://hostname:3343/csvn
+
+# If the console is not running, then try starting it like this:
+
+$ bin/csvn console
+
+#If you want to stop the running server you can run this command:
+
+ 
+
+$ bin/csvn stop
+
+$ bin/csvn-httpd stop
+
+#配置console服务自动启动
+
+$ cd csvn
+
+$ sudo -E bin/csvn install
+
+#配置svn httpd服务自动启动
+
+$ cd csvn
+
+$ sudo bin/csvn-httpd install
+
+ 
+
+ 4.备份数据恢复
+
+1）.在新的服务器上做好相应软件的安装，服务器设置。
+
+2）.拷贝、解压备份tar.gz文件，将/data/u1/csvn/data/repositories下的所有库拷贝到新安装目录的对应的库目录下
+
+3）.将/data/u1/csvn/data/conf目录下的权限文件、创建用户文件也拷贝到新安装目录的对应目录下
+
+4）.重启服务，测试是否可用。
+
+5）.测试通过后，找其他验证人验证。
+
+6）如果需要上线使用，需要找运维人员修改域名。
+
+7）通知研发人员使用。
