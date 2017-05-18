@@ -1,0 +1,68 @@
+
+#backup/restore
+################################
+# backup:
+################################
+sudo gitlab-rake gitlab:backup:create
+cp /var/opt/gitlab/backups/1487976188_gitlab_backup.tar ${bak_path}
+ 
+ 
+################################
+# restore:
+################################
+#install
+dpkg -i gitlab-ce_8.17.0-ce.0_amd64.deb
+ 
+#copy bak
+scp ${bak_path} /data/var/opt/gitlab/backups/
+chown git /data/var/opt/gitlab/backups/1487976188_gitlab_backup.tar
+sudo gitlab-ctl stop unicorn
+sudo gitlab-ctl stop sidekiq
+sudo gitlab-ctl status
+sudo gitlab-rake gitlab:backup:restore BACKUP=1487976188
+sudo gitlab-ctl status
+sudo gitlab-rake gitlab:check SANITIZE=true
+
+
+-------------------------------------------------------------------------------
+uprate:uprade from 8.11.6 410d751 to  9.1.4 fed799a 
+1)back up 
+https://about.gitlab.com/update/
+
+ 2)   back up 
+    http://gitlab.rd.chanjet.com/help/raketasks/backup_restore.md
+install same version on new server
+794 bash create_dirs.sh
+797 ls -al /etc/gitlab /opt/gitlab /var/log/gitlab /var/opt/gitlab
+802 dpkg -i gitlab-ce_8.11.6-ce.0_amd64.deb
+803 sudo gitlab-ctl reconfigure
+### config ldap datadir
+815 vim /etc/gitlab/gitlab.rb
+
+
+3)restore backup on new server
+http://gitlab.rd.chanjet.com/help/raketasks/backup_restore.md
+806 mv ../1494955507_gitlab_backup.tar /var/opt/gitlab/backups/
+810 chown git:root /var/opt/gitlab/backups/1494955507_gitlab_backup.tar
+811 ls -al /var/opt/gitlab/backups/
+812 sudo gitlab-ctl stop unicorn
+813 sudo gitlab-ctl stop sidekiq
+814 sudo gitlab-ctl status
+821 sudo gitlab-rake gitlab:backup:restore BACKUP=1494955507
+
+
+4)upgrade 
+https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update/README.md#updating-from-gitlab-66-and-higher-to-the-latest-version
+
+823 sudo gitlab-ctl start
+824 sudo gitlab-rake gitlab:check SANITIZE=true
+828 dpkg -i gitlab-ce_9.1.4-ce.0_amd64.deb
+829 sudo touch /etc/gitlab/skip-auto-migrations
+830 dpkg -i gitlab-ce_9.1.4-ce.0_amd64.deb
+831 sudo rm /etc/gitlab/skip-auto-migrations
+832 sudo gitlab-ctl reconfigure
+833 sudo gitlab-ctl status
+834 sudo gitlab-ctl start down
+835 sudo gitlab-ctl start nginx
+836 sudo gitlab-ctl start unicorn
+837 sudo gitlab-rake gitlab:check SANITIZE=true
