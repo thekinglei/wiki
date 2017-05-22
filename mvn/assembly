@@ -1,0 +1,123 @@
+
+示例1
+
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0">
+  <id>assembly</id>
+  <formats>
+    <format>tar</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <fileSets>
+		<fileSet>
+            <directory>src/main/resources</directory>
+            <outputDirectory>/</outputDirectory>
+			<includes>
+                <include>*.sh</include>
+            </includes>
+            <fileMode>0755</fileMode>
+        </fileSet>
+  </fileSets>
+  <dependencySets>
+		<dependencySet>
+			<outputDirectory>lib</outputDirectory>
+		</dependencySet>
+	</dependencySets>
+</assembly>
+
+==================================================================================================================================
+
+示例2
+
+
+
+ <plugin>
+
+                                                        <artifactId> maven-assembly-plugin </artifactId>
+
+                                                        <version> 2.2-beta-2 </version>
+
+                                                        <configuration>
+
+                                                                      <finalName> ${artifactId} </finalName>
+
+                                                                      <descriptors>
+
+                                                                                    <descriptor> src/main/assemble/ assembly .xml </descriptor>
+
+                                                                      </descriptors>
+
+                                                        </configuration>
+
+                                                        <executions>
+
+                                                                      <execution>
+
+                                                                                    <id> make-assembly </id>
+
+                                                                                    <phase> package </phase>
+
+                                                                                    <goals>
+
+                                                                                                  <goal> single </goal>
+
+                                                                                    </goals>
+
+                                                                      </execution>
+
+                                                        </executions>
+
+                                          </plugin>
+
+ 
+
+src/main/assemble/ assembly .xml 配置文件内容如下：
+
+注意：打包格式固定为 tar.gz
+
+<assembly
+
+              <id> assembly </id>
+
+              <formats>
+
+                            <format> tar.gz </format>
+
+              </formats>
+
+              <includeBaseDirectory> false </includeBaseDirectory>
+
+              <fileSets>
+
+                            <fileSet>
+
+                                          <directory> ${project.build.directory} </directory>
+
+                                          <outputDirectory></outputDirectory>
+
+                                          <includes>
+
+                                                        <include> ${artifact.artifactId}-${artifact.version}.jar </include>
+
+                                          </includes>
+
+                            </fileSet>
+
+                            <fileSet>
+
+                                          <directory> src/main/resources </directory>
+
+                                          <outputDirectory></outputDirectory>
+
+                                          <includes>
+
+                                                        <include> *.sh </include>
+
+                                          </includes>
+
+                            </fileSet>
+
+              </fileSets>
+
+ 
+
+</assembly> 
