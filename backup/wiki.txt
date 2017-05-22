@@ -1,0 +1,12 @@
+针对每个应用，每天执行，保留一个月的备份：
+第一步： 在【应用服务器上】上，将需要备份的目录，同步到【备份服务器上】的【镜像目录】
+                rsync -a --delete {{ app_src_dir }}  {{ app_mir_path }}
+第二步： 在【备份服务器上】上，加密压缩【镜像目录】为【当天的备份文件】
+                tar cP {{ app_mir_path }} | pigz | openssl des3 -salt -k "************" |dd of={{ bak_file }}
+第三步： 在【备份服务器上】上，将【当天的备份文件】上传到【aliyun OSS】，上传完成后，对上传文件和本地文件的crc64码
+               ossutil cp {{ bak_file }}  {{ oss_bak_url }} 
+               crc64_local= $(ossutil hash ${bak_file})
+               crc64_upload=$(ossutil stat ${oss_bak_url}|grep 'X-Oss-Hash-Crc64ecma'|awk '{ print $3; }')
+               if [ "${crc64_upload}" != "${crc64_local}" ]; then 
+                  echo "上传失败"！; exit 9;
+               fi
