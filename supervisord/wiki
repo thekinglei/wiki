@@ -1,0 +1,16 @@
+启动脚本模板如下
+#! /bin/bash
+
+CurrentDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+cd ${CurrentDir}
+
+
+
+SETENV_DIR=${CurrentDir%/*}'/service'
+if [ -x $SETENV_DIR/setenv.sh ];then
+. $SETENV_DIR/setenv.sh
+fi
+
+
+eval exec java -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Dspring.profiles.active=${ConfigType} -Xms1024m -Xmx1024m -Xmn256m -Xss256k -XX:PermSize=256M -XX:MaxPermSize=256M -XX:MaxTenuringThreshold=7 -XX:GCTimeRatio=19 -jar `pwd`/ccs-cloudprint-java-agent-0.0.1-SNAPSHOT.jar 
