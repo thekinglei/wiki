@@ -1,0 +1,16 @@
+centos6.8：
+centos官方指定的国内镜像源列表网址：http://isoredirect.centos.org/centos/6.8/isos/x86_64/
+本次选用网易镜像源   http://mirrors.163.com/centos/6.8/isos/x86_64/
+包名：CentOS-6.8-x86_64-bin-DVD1.iso 
+md5值：
+f73c2c4dd333c202ca85ea66120cacdf  CentOS-6.8-x86_64-bin-DVD1.iso
+
+ubuntu14.04：
+官方地址：http://www.ubuntu.org.cn/index_kylin
+下载地址：http://releases.ubuntu.com/?_ga=2.265345231.1795072393.1496628966-1219993016.1496628966
+包名：Ubuntu 14.04.5 LTS (Trusty Tahr)
+md5值：
+
+windows操作系统（非官网）
+下载地址非官网，但是与官网一直，只是没有激活
+下载地址：http://msdn.itellyou.cn/
