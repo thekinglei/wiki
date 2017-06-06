@@ -3,3 +3,7 @@ lsb_release -a
 cat /etc/issue
 2、删除指定天数的文件
 find 对应目录 -mtime +天数 -name "文件名" -exec rm -rf {}
+
+3、查看linux线程
+ps -axm
+ps -T
