@@ -7,3 +7,8 @@ find 对应目录 -mtime +天数 -name "文件名" -exec rm -rf {}
 3、查看linux线程
 ps -axm
 ps -T
+
+4、统计文本content.txt中每个单词的出现的频率，不区分大小写，不统计数字和符号
+
+cat content.txt | awk '{for(i=1;i<=NF;i++){count[$i]++}} END{for(i in count){print i"\t" count[i]}}' | sort -k2nr | head -n 10
+cat content.txt | tr '[:upper:]' '[:lower:]' | tr -cs '[:alpha:]' '\n' | sort | uniq -c | sort -rn | head -n 10
