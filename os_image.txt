@@ -14,3 +14,8 @@ md5值：
 windows操作系统（非官网）
 下载地址非官网，但是与官网一直，只是没有激活
 下载地址：http://msdn.itellyou.cn/
+
+官网下载地址：
+https://www.microsoft.com/zh-cn/software-download/windows7
+https://www.microsoft.com/zh-cn/software-download/windows10
+需要先下载工具，通过工具下载相关系统，并俺需要制作成iso文件
