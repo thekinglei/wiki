@@ -66,3 +66,6 @@ https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update/README.md#up
 835 sudo gitlab-ctl start nginx
 836 sudo gitlab-ctl start unicorn
 837 sudo gitlab-rake gitlab:check SANITIZE=true
+
+##补充：备份的时候（gitlab-ce9.xx.xx），备份生成的文件名中格式如下：1497494971_2017_06_15_9.2.5_gitlab_backup.tar
+##需要重命名下文件为1497494971_gitlab_backup.tar，即把_2017_06_15_9.2.5 去掉
