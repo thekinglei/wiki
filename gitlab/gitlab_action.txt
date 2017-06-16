@@ -69,3 +69,5 @@ https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update/README.md#up
 
 ##补充：备份的时候（gitlab-ce9.xx.xx），备份生成的文件名中格式如下：1497494971_2017_06_15_9.2.5_gitlab_backup.tar
 ##需要重命名下文件为1497494971_gitlab_backup.tar，即把_2017_06_15_9.2.5 去掉
+
+集成版本的用git用户备份 sudo su git 到 /安装路径/gitlab-8.9.6-0/apps/gitlab/htdocs/  这个目录下执行备份和恢复命令 bundle exec bin/rake gitlab:backup:create RAILS_ENV=production
