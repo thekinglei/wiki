@@ -1,8 +1,11 @@
 一 、扩展根目录磁盘
+
 VMware下扩展ubuntu虚拟机根目录分区
+拷贝自http://imcczy.com/how-to-expand-the-root-filesystem-in-vmware.html
 
 December 07, 2014 | vmware
 原文链接：http://t.cn/RzCP9E2
+
 
 年代久远，谨慎尝试
 
