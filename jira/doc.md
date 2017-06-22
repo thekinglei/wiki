@@ -13,3 +13,11 @@ jira.home =/opt/JIRA_HOM  #注意不要有空格，引号等，
 ./bin/start-jira.sh 
 
 3、默认是IP:8080 ，选择第二项 next
+
+4、修改默认端口
+修改conf/server.xml中将8080改为80
+
+
+5、备份恢复
+备份：将JIRA_HOME整个目录备份
+恢复：将备份文件整个覆盖即可
