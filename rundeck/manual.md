@@ -15,3 +15,6 @@ framework.server.port = 4440
 framework.server.url = http://192.168.2.38:4440
 
 6、rundeck启动成功，通过浏览器访问，默认账号密码：admin/admin
+   修改amdin账号密码：在rundeck工作目录下： etc/preferences.properties
+   默认配置：framework.server.password=admin
+
