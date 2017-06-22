@@ -13,3 +13,6 @@ git push  --mirror git@192.168.0.40:root/test-project-sync.git
 
 2、gitlab历史版本下载
 https://packages.gitlab.com/gitlab/gitlab-ce
+
+3、版本7.13.1 官网下载安装地址
+https://packages.gitlab.com/gitlab/gitlab-ce/packages/el/6/gitlab-ce-7.13.1-ce.0.el6.x86_64.rpm
