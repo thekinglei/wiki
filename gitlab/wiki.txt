@@ -16,3 +16,8 @@ https://packages.gitlab.com/gitlab/gitlab-ce
 
 3、版本7.13.1 官网下载安装地址
 https://packages.gitlab.com/gitlab/gitlab-ce/packages/el/6/gitlab-ce-7.13.1-ce.0.el6.x86_64.rpm
+
+================
+> curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+> sudo yum install gitlab-ce-7.13.1-ce.0.el6.x86_64
+================
