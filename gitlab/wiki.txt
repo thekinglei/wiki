@@ -9,3 +9,7 @@ git push  --mirror git@192.168.0.40:root/test-project-sync.git
 ＃镜像版本库可以用git remote update从远程版本库获取更新内容
 git remote update
 git push  --mirror git@192.168.0.40:root/test-project-sync.git
+
+
+2、gitlab历史版本下载
+https://packages.gitlab.com/gitlab/gitlab-ce
