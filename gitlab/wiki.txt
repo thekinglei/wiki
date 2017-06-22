@@ -1,0 +1,11 @@
+一、 镜像克隆
+两台gitlab服务器之间同步
+1.从公网上gitlab服务器获取镜像版本库
+git clone --mirror git@112.126.81.138:root/test-project-sync.git
+2.在本地局域网上gitlab服务器创建版本库
+3.以镜像方式推送版本库到本地局域网上gitlab服务器
+git push  --mirror git@192.168.0.40:root/test-project-sync.git
+4. 更新镜像版本库
+＃镜像版本库可以用git remote update从远程版本库获取更新内容
+git remote update
+git push  --mirror git@192.168.0.40:root/test-project-sync.git
