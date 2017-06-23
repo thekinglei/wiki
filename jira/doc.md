@@ -25,3 +25,5 @@ jira.home =/opt/JIRA_HOM  #注意不要有空格，引号等，
 恢复：将备份文件整个覆盖即可
 
 6、官网jira历史版本下载页面
+
+http://www.atlassian.com/software/jira/download-archives
