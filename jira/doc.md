@@ -12,7 +12,7 @@ jira.home =/opt/JIRA_HOM  #注意不要有空格，引号等，
 2、启动
 ./bin/start-jira.sh 
 
-3、默认是IP:8080 ，选择第二项 next
+3、默认是IP:8080 ，选择第二项 next：I will set it up  myself
 
    数据库选择了系统默认的数据库
 
