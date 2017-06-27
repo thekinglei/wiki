@@ -1,8 +1,16 @@
 1、查看系统版本
 lsb_release -a
 cat /etc/issue
-2、删除指定天数的文件
-find 对应目录 -mtime +天数 -name "文件名" -exec rm -rf {}
+2、删除3天数以上的文件
+注意：结尾一定是 \; 否则会报错
+删除三天以上的test文件或目录
+find 对应目录 -mtime +3 -name "test" -exec rm -rf {} \;
+
+查找3天以内的文件或者目录，执行 ls -l 
+find 对应目录 -mtime -3  -exec ls -l {} \;
+
+删除名字为test的文件，并交互删除，需要y确认 （通过 -ok实现）
+find  ./ -name test -type d -ok rm {} \;
 
 3、查看linux线程
 ps -axm
