@@ -1,9 +1,33 @@
 linux系统监控工具：htop，glances
 glances：https://www.ibm.com/developerworks/cn/linux/1304_caoyq_glances/
-
+=================================================================================
 windows文件传到linux下，换行符是^M， 调整为linux下换行符
 比如test.txt
 执行命令（如果没有apt-get install dos2unix）：
 dos2unix   testtxt
 另一种方法：
 sed -i 's/\r//g' test.txt
+
+
+=================================================================================
+文件编码转换
+
+从windwos下的文件在linux下操作时，往往会因为编码问题导致查看乱码
+如果vim 查看乱码的话
+~/.vimrc 文件中添加以下内容：
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+
+
+文件编码转换
+1.在Vim中直接进行转换文件编码,比如将一个文件转换成utf-8格式
+:set fileencoding=utf-8
+
+2. enconv 转换文件编码，比如要将一个GBK编码的文件转换成UTF-8编码，操作如下
+enconv -L zh_CN -x UTF-8 filename
+
+3. iconv 转换，iconv的命令格式如下：
+iconv -f encoding -t encoding inputfile
+比如将一个UTF-8 编码的文件转换成GBK编码
+iconv -f UTF-8 -t GBK file1 -o file2
