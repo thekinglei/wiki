@@ -1,2 +1,7 @@
 linux系统监控工具：htop，glances
 glances：https://www.ibm.com/developerworks/cn/linux/1304_caoyq_glances/
+
+windows文件传到linux下，换行符是^M， 调整为linux下换行符
+比如test.txt
+执行命令（如果没有apt-get install dos2unix）：
+dos2unix   testtxt
