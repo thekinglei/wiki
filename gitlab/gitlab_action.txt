@@ -71,3 +71,7 @@ https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update/README.md#up
 ##需要重命名下文件为1497494971_gitlab_backup.tar，即把_2017_06_15_9.2.5 去掉
 
 集成版本的用git用户备份 sudo su git 到 /安装路径/gitlab-8.9.6-0/apps/gitlab/htdocs/  这个目录下执行备份和恢复命令 bundle exec bin/rake gitlab:backup:create RAILS_ENV=production
+
+
+如果是docker容器启动的gitlab，备份命令：docker exec -t <container name> gitlab-rake gitlab:backup:create
+参考：http://docs.gitlab.com/ce/raketasks/backup_restore.html
