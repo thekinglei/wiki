@@ -12,4 +12,7 @@ bash fullinstall
 
 
 3、安装nagios xi时，会自动安装mysql服务器
-账号密码存储在文件：automysqlbackup
+账号密码存储在文件：nagiox/automysqlbackup
+注意：
+在ubuntu下，安装的是mysql
+在centos下，安装的是MariaDB
