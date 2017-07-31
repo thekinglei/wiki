@@ -16,3 +16,8 @@ bash fullinstall
 注意：
 在ubuntu下，安装的是mysql
 在centos下，安装的是MariaDB
+
+4、
+web服务器
+在ubuntu下安装的apache2
+在centos下是httpd
