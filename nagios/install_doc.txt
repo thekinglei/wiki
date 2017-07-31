@@ -9,3 +9,7 @@ bash fullinstall
 
 注意：必须设置/etc/hostname，并且不能是IP的格式，可以是域名的格式，比如：my-nagiox.com
 重要：安装在一个干净的，最小化的系统 （官方文档强烈建议！不要在已有的CentOS 系统上安装，因为整个安装包会自动下载和编译，安装相关软件）
+
+
+3、安装nagios xi时，会自动安装mysql服务器
+账号密码存储在文件：automysqlbackup
