@@ -17,4 +17,25 @@ framework.server.url = http://192.168.2.38:4440
 6、rundeck启动成功，通过浏览器访问，默认账号密码：admin/admin
    修改amdin账号密码：在rundeck工作目录下： etc/preferences.properties
    默认配置：framework.server.password=admin
+   
+   添加调整账号密码：
+ 
+   修改配置文件：server/config/realm.properties
+   说明：添加用户：test，密码：testpassword，用户类型：user，admin
+   #
+# This file defines users passwords and roles for a HashUserRealm
+#
+# The format is
+#  <username>: <password>[,<rolename> ...]
+#
+# Passwords may be clear text, obfuscated or checksummed.  The class 
+# org.mortbay.util.Password should be used to generate obfuscated
+# passwords or password checksums
+#
+# This sets the temporary user accounts for the Rundeck app
+#
+admin:admin,user,admin
+user:user,user
+test:testpassword,user,admin
+   
 
