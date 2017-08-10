@@ -25,7 +25,9 @@ Server=192.168.1.1
 ServerActive=192.168.1.1
 
 如果zabbix-agent与server不匹配，则通过rpm引入源
+
 例如：参考官网：https://www.zabbix.com/documentation/3.2/manual/installation/install_from_packages/repository_installation
+
 rpm -ivh http://repo.zabbix.com/zabbix/3.2/rhel/7/x86_64/zabbix-release-3.2-1.el7.noarch.rpm
 
 yum install zabbix-agent（yum reinstall zabbix-agent）
