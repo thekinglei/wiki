@@ -1,1 +1,4 @@
 重置自增长的id号：TRUNCATE TABLE jenkins_build_history RESTART IDENTITY
+
+查看mysql默认的慢查询阈值
+show variables like '%long_query_time%';
