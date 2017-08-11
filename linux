@@ -31,3 +31,20 @@ enconv -L zh_CN -x UTF-8 filename
 iconv -f encoding -t encoding inputfile
 比如将一个UTF-8 编码的文件转换成GBK编码
 iconv -f UTF-8 -t GBK file1 -o file2
+
+4、比较两个文件的不同
+vimd file1 file2
+
+diff file1 file2
+
+计算不同行数
+grep -cvFf file1 file2
+
+计算相同行数
+grep -cFf file1 file2
+
+打印不同行
+grep -vFf file1 file2
+
+grep显示行标
+grep -n "test"
