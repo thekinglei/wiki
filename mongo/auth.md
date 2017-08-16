@@ -35,3 +35,8 @@ journal=true
 > db.auth("root","password")    #登录认证
 
 >show dbs    #认证通过，查看服务器下的所有库
+
+>use mydb    #切换到db ： mydb，并创建用户名为me的用户，授予读写权限
+
+>db.createUser({user:"me",pwd:"me-password",roles:["readWrite"]})
+
