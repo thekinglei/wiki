@@ -47,12 +47,17 @@ done
 touch /etc/supervisor/conf.d/test.ini
 
 vim test.ini
+
+注意：test.ini格式，标头[program:test],以[key:value]的形式确定程序名称，command是启动命令
+
 ------------------内容如下-----------------------
+
 [program:test]
 command = /root/test.sh
 auto_start = true
 autorestart = true
 username=root
+
 -----------------------------------------
 
 3）重启supervisor，（此操作为ubuntu，centos略有区别）
