@@ -68,3 +68,14 @@ username=root
 supervisorctl start test
 
 
+
+注意事项：
+对于托管服务来说，自身不能是后台执行；
+举例：
+1)启动脚本不能写成 nohup  java -jar test.jar &  ,而是 exec java -jar test.jar &
+
+2)对于mongo来说 启动命令为 mongod -f /etc/mongodb.conf ,注意配置文件mongodb.conf中配置项：【后台运行：fork=true】要注释掉；
+
+
+
+
