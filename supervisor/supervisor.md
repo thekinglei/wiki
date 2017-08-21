@@ -87,8 +87,11 @@ http://supervisord.org/subprocess.html
 
 [program:apache]
 command = /root/apache-tomcat-8.5.11/bin/catalina.sh run
+
 auto_start = true
+
 autorestart = true
+
 username=root
 
 
