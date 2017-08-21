@@ -81,7 +81,8 @@ supervisorctl start test
 http://supervisord.org/subprocess.html
 
 
-3)supervisord 托管apache服务
+3)supervisord 托管apache服务  
+说明；命令采用catalina.sh run 而非cata.ina.sh start，原因是run在不创建新进程情况下启动，start启动了新的进程，因此必须是run
 
 #cat /etc/supervisor/conf.d/apache.conf
 
