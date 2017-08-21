@@ -81,5 +81,16 @@ supervisorctl start test
 http://supervisord.org/subprocess.html
 
 
+3)supervisord 托管apache服务
+
+#cat /etc/supervisor/conf.d/apache.conf
+
+[program:apache]
+command = /root/apache-tomcat-8.5.11/bin/catalina.sh run
+auto_start = true
+autorestart = true
+username=root
+
+
 
 
