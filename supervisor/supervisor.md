@@ -70,7 +70,7 @@ supervisorctl start test
 
 
 注意事项：
-对于托管服务来说，自身不能是后台执行；
+对于托管服务来说，自身不能是后台执行，即supervisor 监控的进程必须以非daemon 方式运行；
 举例：
 1)启动脚本不能写成 nohup  java -jar test.jar &  ,而是 exec java -jar test.jar &
 
