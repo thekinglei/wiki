@@ -76,6 +76,10 @@ supervisorctl start test
 
 2)对于mongo来说 启动命令为 mongod -f /etc/mongodb.conf ,注意配置文件mongodb.conf中配置项：【后台运行：fork=true】要注释掉；
 
+可以参考官网，mysql（会涉及启动子进程）的托管方法
+
+http://supervisord.org/subprocess.html
+
 
 
 
