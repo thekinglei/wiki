@@ -94,4 +94,6 @@ username=root
 
 
 
-
+补充：  
+1、对于python的守护进程，比如flask框架，启动监听时，如下所示，必须将debug改为False，否则会导致启动一个进程时会产生一个子进程，进而无法使用supervisor进行管理；  
+app.run(host='192.168.1.1', port=20000, debug=False)
