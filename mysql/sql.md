@@ -17,3 +17,4 @@ drop database wl2;
 create databases $database_name;
 show databases;
 EOF
+的
