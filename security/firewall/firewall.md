@@ -24,7 +24,12 @@ public (active)
 
 2、添加暴露的端口：添加暴露8080端口，http
 
-firewall-cmd --add-port=8080/tcp
+注意此命令，重启虚机后就失效了  
+firewall-cmd --add-port=8080/tcp  
 
+如果要永久开放8080端口，加参数 --permanent  
+firewall-cmd --add-port=8080/tcp --permanent  
 
+重载配置  
+firewall-cmd --reload
 
