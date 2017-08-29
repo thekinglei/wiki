@@ -39,7 +39,7 @@ PS：
 目前能想到的办法是做mongo集群或者分片，在logrotate截取日志时，同时重启mongo，因为是集群或者分片，并不影响mongo使用  
 另一种手动处理方式；
 #mongo  
-use admin    
+use admin  
 db.runCommand({logRotate:1})  
 
 
