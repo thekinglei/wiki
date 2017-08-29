@@ -36,7 +36,11 @@ postrotate/endscript: 在所有其它指令完成后，postrotate和endscript里
 
 PS：
 经过实践，执行完logrotate后，mongo无法再往mongdb.log中写日志，意味着，每次执行完logrotate 后，必须重启mongo，因此暂时不用这种方式  
-目前能想到的办法是做mongo集群或者分片，在logrotate截取日志时，同时重启mongo，因为是集群或者分片，并不影响mongo使用
+目前能想到的办法是做mongo集群或者分片，在logrotate截取日志时，同时重启mongo，因为是集群或者分片，并不影响mongo使用  
+另一种手动处理方式；
+#mongo  
+use admin    
+db.runCommand({logRotate:1})  
 
 
 
