@@ -42,6 +42,8 @@ PS：
 use admin  
 db.runCommand({logRotate:1})  
 
+命令行执行：/opt/mongodb-linux-x86_64-rhel70-3.4.5/bin/mongo admin  --eval "printjson(db.runCommand({logRotate:1}))"
+
 
 
 
