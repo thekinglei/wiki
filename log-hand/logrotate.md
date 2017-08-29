@@ -33,5 +33,8 @@ postrotate/endscript: 在所有其它指令完成后，postrotate和endscript里
 上面的模板是通用的，而配置参数则根据你的需求进行调整，不是所有的参数都是必要的
 
 
+经过实践，执行完logrotate后，mongo无法再往mongdb.log中写日志，意味着，每次执行完logrotate 后，必须重启mongo，因此暂时不用这种方式
+
+
 
 
