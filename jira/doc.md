@@ -27,3 +27,10 @@ jira.home =/opt/JIRA_HOM  #注意不要有空格，引号等，
 6、官网jira历史版本下载页面
 
 http://www.atlassian.com/software/jira/download-archives
+
+
+7、破解  
+1)整除安装jira-7.3.6，此时试用期1个月  
+2)安装成功后，关闭jira  
+3)替换本目录下三个jar包到jira运行目录（atlassian-jira-software-7.3.6-standalone/atlassian-jira/WEB-INF/lib/），然后重启  
+4)再查看jira服务器授权到期日 08/二月/33， 即：2033 2月 08日  
