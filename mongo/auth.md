@@ -40,3 +40,9 @@ journal=true
 
 >db.createUser({user:"me",pwd:"me-password",roles:["readWrite"]})
 
+总结：  
+1）切换到admin库，并创建超级用户  
+2）切换到对应的库：use database_name，并设置新的账号密码，及对应权限  
+3）查看账号：show users  
+4）认证登录：db.auth('user_name','password')
+
