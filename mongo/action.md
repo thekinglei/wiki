@@ -38,3 +38,8 @@ mongo>db.runCommand({logRotate:1})
 3、mongo数据备份
 ssh root@1.1.1.1 "/opt/mongodbclient/bin/mongodump -h 1.1.1.1 --username wl --password "password" -o /var/backup/mongo/mongodatabackup"
 
+4、删除数据库:删除数据库test
+use admin
+db.auth('user','password')
+use teset
+db.dropDatabase()
