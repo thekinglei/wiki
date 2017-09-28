@@ -40,6 +40,8 @@ journal=true
 
 >db.createUser({user:"me",pwd:"me-password",roles:["readWrite"]})
 
+>db.updateUser('test',{pwd:"test"})  
+
 总结：  
 1）切换到admin库，并创建超级用户  
 2）切换到对应的库：use database_name，并设置新的账号密码，及对应权限  
