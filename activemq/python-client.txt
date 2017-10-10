@@ -1,0 +1,27 @@
+安装stomp  
+在github上下载：https://github.com/jasonrbriggs/stomp.py.git  
+python setup.py install  
+
+import time
+import sys
+import stomp
+
+class MyListener(object):
+    def on_error(self, headers, message):
+        print('received an error %s' % message)
+    def on_message(self, headers, message):
+        print('received a message %s' % message)
+
+#官方示例的连接代码
+#conn = stomp.Connection([('ip...',61613)])  
+conn.set_listener('', MyListener())
+conn.start()
+conn.connect()
+
+conn.subscribe(destination='/queue/test', id=1, ack='auto')
+#注意，官方示例这样发送消息的  $ python simple.py hello world
+#conn.send(body='hello,garfield! this is '.join(sys.argv[1:]), destination='/queue/test')
+conn.send(body='hello,garfield!', destination='/queue/test')
+
+time.sleep(2)
+conn.disconnect()
