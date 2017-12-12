@@ -48,3 +48,8 @@ journal=true
 3）查看账号：show users  
 4）认证登录：db.auth('user_name','password')
 
+补充说明：  
+admin的超级账户只是有操作各种账号授权管理的权限，不具有具体库的操作权限，因此，如果涉及到数据库恢复的问题，必须创建一个超级账号并设置可备份、恢复等操作权限，参考http://blog.csdn.net/u011191463/article/details/68485529
+
+
+
