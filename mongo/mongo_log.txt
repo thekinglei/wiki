@@ -1,0 +1,10 @@
+verbose&&quiet  
+mongodb默认情况下日志文件非常大，每秒都会记录大量的connection等调试信息，这对于我们管理日志和定位错误有很大影响，需要修改它的默认日志级别。  
+mongodb的日志级别在配置文件中的verbose和quiet参数决定。verbose表示会打印debug信息，范例配置如下  
+verbose=true  
+vv=true  
+注：这里的vv表示debug级别，有vv-vvvvv，v越多则记录的日志信息越详细。 
+而如果设置了quiet=true参数，表示安静地输出，即不会再有debug信息，日志中只会打印一些关键的信息，比如自动故障切换，系统错误等信息，相当于error log。这时需要注释掉verbose参数。范例配置如下:
+     
+#verbose=true
+quiet=true
