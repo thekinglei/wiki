@@ -1,6 +1,6 @@
 从shell命令行执行mongo命令行命令  
 示例：mongo admin --eval "printjson(db.runCommand({"listDatabases":1}))"  
-显示每个库的磁盘占用空间，以json格式显示出来  
+显示每个库的磁盘占用空间，库名，以json格式显示出来  
 结果如下  
 {
 	"databases" : [
@@ -21,5 +21,59 @@
 		}
 	],
 	"totalSize" : 188416,
+	"ok" : 1
+}
+
+
+
+查看当前库wl 下所有connections 名：test1，test2
+mongo wl --eval "printjson(db.runCommand({"listCollections":1}))"  
+结果如下  
+MongoDB shell version v3.4.5
+connecting to: mongodb://127.0.0.1:27017/wl
+MongoDB server version: 3.4.5
+{
+	"cursor" : {
+		"id" : NumberLong(0),
+		"ns" : "wl.$cmd.listCollections",
+		"firstBatch" : [
+			{
+				"name" : "test2",
+				"type" : "collection",
+				"options" : {
+					
+				},
+				"info" : {
+					"readOnly" : false
+				},
+				"idIndex" : {
+					"v" : 2,
+					"key" : {
+						"_id" : 1
+					},
+					"name" : "_id_",
+					"ns" : "wl.test2"
+				}
+			},
+			{
+				"name" : "test",
+				"type" : "collection",
+				"options" : {
+					
+				},
+				"info" : {
+					"readOnly" : false
+				},
+				"idIndex" : {
+					"v" : 2,
+					"key" : {
+						"_id" : 1
+					},
+					"name" : "_id_",
+					"ns" : "wl.test"
+				}
+			}
+		]
+	},
 	"ok" : 1
 }
