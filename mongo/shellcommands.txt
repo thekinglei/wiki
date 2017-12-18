@@ -1,6 +1,6 @@
 查看mongo包含的所有命令：db.listCommands()
 
-从shell命令行执行mongo命令行命令  
+从shell命令行执行mongo命令行命令，如果有密码，使用-u user -p password即可  
 示例：mongo admin --eval "printjson(db.runCommand({"listDatabases":1}))"  
 显示每个库的磁盘占用空间，库名，以json格式显示出来  
 结果如下  
