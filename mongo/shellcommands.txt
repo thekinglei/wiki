@@ -1,0 +1,25 @@
+从shell命令行执行mongo命令行命令  
+示例：mongo admin --eval "printjson(db.runCommand({"listDatabases":1}))"  
+显示每个库的磁盘占用空间，以json格式显示出来  
+结果如下  
+{
+	"databases" : [
+		{
+			"name" : "admin",
+			"sizeOnDisk" : 49152,
+			"empty" : false
+		},
+		{
+			"name" : "local",
+			"sizeOnDisk" : 73728,
+			"empty" : false
+		},
+		{
+			"name" : "wl",
+			"sizeOnDisk" : 65536,
+			"empty" : false
+		}
+	],
+	"totalSize" : 188416,
+	"ok" : 1
+}
