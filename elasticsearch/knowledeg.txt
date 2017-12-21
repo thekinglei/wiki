@@ -1,0 +1,59 @@
+1、安装配置elasticsearch  
+并配置elasticsearch.yml，绑定主机IP（192.168.1。1）  
+
+2、启动服务  
+./elasticsrarch/bin/elasticsearch -d
+
+3、查看监听端口：netstat -nlpt|grep 9200  
+如果正常占用的话，部署ok  
+
+4、自定义中文词典，参考：https://www.cnblogs.com/zlslch/p/6441315.html?utm_source=itdadao&utm_medium=referral  
+配置成功后，重启  
+
+5、设置搜索productindex  
+curl -XPOST "http://192.168.1.1:9200/productindex"  
+
+自定义词典mydict.dic中添加  “体备”  
+查看效果  
+curl 'http://192.168.1.1:9200/productindex/_analyze?analyzer=ik_max_word&pretty=true' -d '{"text":"整体备份elastic"}'
+
+显示如下  
+{
+  "tokens" : [ {
+    "token" : "整",
+    "start_offset" : 0,
+    "end_offset" : 1,
+    "type" : "CN_CHAR",
+    "position" : 0
+  }, {
+    "token" : "体备",
+    "start_offset" : 1,
+    "end_offset" : 3,
+    "type" : "CN_WORD",
+    "position" : 1
+  }, {
+    "token" : "体",
+    "start_offset" : 1,
+    "end_offset" : 2,
+    "type" : "CN_WORD",
+    "position" : 2
+  }, {
+    "token" : "备",
+    "start_offset" : 2,
+    "end_offset" : 3,
+    "type" : "CN_CHAR",
+    "position" : 3
+  }, {
+    "token" : "份",
+    "start_offset" : 3,
+    "end_offset" : 4,
+    "type" : "CN_CHAR",
+    "position" : 4
+  }, {
+    "token" : "elastic",
+    "start_offset" : 4,
+    "end_offset" : 11,
+    "type" : "ENGLISH",
+    "position" : 5
+  } ]
+}
