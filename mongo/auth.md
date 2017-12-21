@@ -53,7 +53,7 @@ admin的超级账户只是有操作各种账号授权管理的权限，不具有
 
 示例如下  
 mongoexport导出.dat的文件恢复  
-#mongoimport -u username -p "password" --authenticationDatabase admin -d wltest -c wltable ./wltable.dat  
+#mongoimport -u username -p "password" --authenticationDatabase admin -d wltest -c wltable -o ./wltable.dat  
 mongodump导出的目录恢复  
 #mongorestore -u username -p "password" --authenticationDatabase admin -d wltest -c wltable ./wltable.bson  
 
