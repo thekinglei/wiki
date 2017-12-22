@@ -57,3 +57,8 @@ curl 'http://192.168.1.1:9200/productindex/_analyze?analyzer=ik_max_word&pretty=
     "position" : 5
   } ]
 }
+
+
+6、说明  
+当前ela并不支持自定义词典热更新，自定义词典或者远程词典修改后必须重启ela，重新加载，才生效  
+网上查到的通过配置远程的http请求的配置文件方式，并不生效  
