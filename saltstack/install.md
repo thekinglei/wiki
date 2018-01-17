@@ -4,7 +4,7 @@
  二、安装web界面
  
  1、克隆地址  
-git clone https://github.com/saltstack/halite  /opt/halite
+git clone https://github.com/saltstack/halite  /opt/halite  
 2、生成index.html文件:   
 cd /opt/halite/halite  
 ./genindex.py -C  
