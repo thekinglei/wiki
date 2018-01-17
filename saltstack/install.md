@@ -5,7 +5,7 @@
  
  1、克隆地址  
 git clone https://github.com/saltstack/halite  /opt/halite
-2、生成index.html文件:  
+2、生成index.html文件:   
 cd /opt/halite/halite  
 ./genindex.py -C  
 3、安装salt-api  
