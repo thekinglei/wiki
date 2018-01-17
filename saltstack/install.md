@@ -26,8 +26,10 @@ external_auth:
            
         
 注意：pam配置的用户不能是root，请新创建一个系统账号，并设置密码
+    useradd test  
+    password test
 
 5、启动sap-api  
 cd /usr/local/src/halite/halite  
 python server_bottle.py -d -C -l debug -s cherrypy  
-然后打开http://ip:8080/app，通过salt/salt登陆即可
+然后打开http://ip:8080/app，通过test/test登陆即可
