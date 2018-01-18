@@ -37,3 +37,9 @@ yum install zabbix-agent（yum reinstall zabbix-agent）
 centos下配置文件包括/etc/zabbix/zabbix_agent.conf 和/etc/zabbix/zabbix_agentd.conf
 有效的配置文件是/etc/zabbix/zabbix_agentd.conf
 StartAgents=3 #启动的agents个数为3
+
+
+
+安装zabbix-agent，注意要与server版本匹配，可上官网进行查看  
+centos上安装zabbix简单方法  
+rpm -ivh http://repo.zabbix.com/zabbix/3.2/rhel/6/x86_64/zabbix-agent-3.2.0-1.el6.x86_64.rpm
