@@ -1,6 +1,9 @@
 ##测试配置文件  
 sudo /usr/sbin/nginx -t  
-  
+##变更配置文件后  
+/usr/sbin/nginx -s reload/restart
+
+
 ##修改配置文件  
 ##1. 在nginx文件中 server节点下有: include /etc/nginx/conf.d/*.conf  nginx会将conf.d文件下的*.conf文件全部自动引入到配置文件中，  
 sudo vim /etc/nginx/nginx.conf  
