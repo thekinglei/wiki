@@ -32,8 +32,9 @@ password ftptest
 
 mkdir /etc/vsftpd/userconf  
 cd /etc/vsftpd/userconf  
-echo "ftptest" >> /etc/vsftpd/userconf/ftptest  #设置用户目录  
-echo "ftptest"  >> /etc/vsftpd/user_list  
+echo "Local_root=./data" >> /etc/vsftpd/userconf/ftptest  #设置用户目录  
+echo "ftptest"  >> /etc/vsftpd/user_list  
+echo "ftptest" >> /etc/vsftpd/chroot_list  
 
 #重启vsftpd
 service vsftpd restart
