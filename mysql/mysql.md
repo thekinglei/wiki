@@ -17,5 +17,6 @@ mysql无法grant时（以root账号执行grant）
 ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables option so it cannot execute this statement  
 
 此时，执行flush privileges ，在执行grant即可
+注：如果现实授权添加失败，可以先glush privileges；再执行grant也能成功；
 
 
