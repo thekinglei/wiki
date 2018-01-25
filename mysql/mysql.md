@@ -10,3 +10,12 @@ collation-server = utf8mb4_general_ci  #必须与第一条同时出现，否则�
 
 Starting MySQL.... ERROR! The server quit without updating PID file (/data/mysqldata/mysql-mongo.pid).
 
+
+mysql无法grant时（以root账号执行grant）  
+将my.cnf配置skip-grant-tables，然后重启mysql   
+然后以无密码登录后，执行：grant all privileges on *.* to username@'%' …………时，报错如下：  
+ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables option so it cannot execute this statement  
+
+此时，执行flush privileges ，在执行grant即可
+
+
