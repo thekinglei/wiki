@@ -62,3 +62,16 @@ curl 'http://192.168.1.1:9200/productindex/_analyze?analyzer=ik_max_word&pretty=
 6、说明  
 当前ela并不支持自定义词典热更新，自定义词典或者远程词典修改后必须重启ela，重新加载，才生效  
 网上查到的通过配置远程的http请求的配置文件方式，并不生效  
+
+7、命令行请求es
+curl -XGET 'http://172.17.1.1:9200/_analyze?pretty&analyzer=ik_smart ' -d '103教育上海非常公司'
+
+curl -XPOST 'http://172.17.1.1:9200/es_enterprise/es_enterprise/_search?pretty ' -d '
+{
+    "query": {
+        "multi_match" : {
+            "query" : "上海图上海非有限公司",
+            "fields": ["companyname"]
+        }
+    }
+}'
