@@ -75,3 +75,15 @@ curl -XPOST 'http://172.17.1.1:9200/es_enterprise/es_enterprise/_search?pretty '
         }
     }
 }'
+
+8、ela扩展启动时占用的内存
+修改：elasticsearch-2.4.1/bin/elasticsearch.in.sh，将256M 1g提高到2g 2g
+
+if [ "x$ES_MIN_MEM" = "x" ]; then
+    #ES_MIN_MEM=256m
+    ES_MIN_MEM=2g
+fi
+if [ "x$ES_MAX_MEM" = "x" ]; then
+    #ES_MAX_MEM=1g
+    ES_MAX_MEM=2g
+fi
