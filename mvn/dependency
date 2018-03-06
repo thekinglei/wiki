@@ -1,3 +1,7 @@
 检查依赖树  
 检查依赖树，并重定向到文件dependency.xml中  
 mvn dependency:tree -Doutput=dependency.xml
+
+
+冲突检查，并重定向到conflict.xml中  
+mvn dependency:tree -Dverbose -Doutput=conflict.xml
