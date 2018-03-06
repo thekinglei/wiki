@@ -1,0 +1,3 @@
+检查依赖树  
+检查依赖树，并重定向到文件dependency.xml中  
+mvn dependency:tree -Doutput=dependency.xml
