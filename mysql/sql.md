@@ -18,3 +18,6 @@ create databases $database_name;
 show databases;
 EOF
 的
+
+将mysql变量打印  
+mysql -u xxxxx -p xxxxx -B -e 'show variables' 可以输出MySQL所有的变量
