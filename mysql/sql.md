@@ -32,3 +32,7 @@ mysqldump -h mysql.server.com -uroot -ptest dbname > backup.sql
 加上-c 生成的backup.sql 的insert 语句 会是 insert (column1,column2, ……) values (value1,value2,……)
 
 如果要求insert每条语句都只插入一条：加入参数 --extended-insert=False  ，此参数默认是True
+
+
+查看mysql表的创建时间：select table_name,create_time from information_schema.tables order by create_time  
+或者：select * from information_schema.tables order by create_time
