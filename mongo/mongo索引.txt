@@ -1,1 +1,40 @@
-一旦你触发一个索引，简单的重启服务并不能解决这个问题，因为MongoDB会继续重启前的建索引的工作。如果之前你运行后台建索引任务，在服务重启后它会变成前台运行的任务。在这种情况下，重启会让问题变得更糟糕。
+1、一旦你触发一个索引，简单的重启服务并不能解决这个问题，因为MongoDB会继续重启前的建索引的工作。如果之前你运行后台建索引任务，在服务重启后它会变成前台运行的任务。在这种情况下，重启会让问题变得更糟糕。
+
+2、译】使用MongoDB时，如何停止失控的索引创建过程？
+
+源自：https://www.jianshu.com/p/f9d71763e844
+
+选项一：杀掉建索引的进程
+使用db.currentOp()定位建索引进程，然后使用db.killOp(<opid>)杀掉操作。建索引大致会是以下的样子：
+{ "opid" : 820659355, "active" : true, "lockType" : "write", .... "op" : "insert", "ns" : "xxxx", "query" : { }, "client" : "xxxx", "desc" : "conn", "msg" : "index: (2/3) btree bottom up 292168587/398486401 64%" }
+如果正在建索引的节点不能响应新连接，或者killOp不起作用，使用选项二。
+
+选项二：配置“noIndexBuildRetry”并重启
+MongoDB提供了选项“noIndexBuildRetry”，它会指示MongoDB重启后不再继续没建完的索引。
+该参数并没有直接出现在配置文件中，只是作为mongod进程的参数。不推荐手工使用该参数运行mongod，因为如果你偶尔以特定用户（如root）运行monogod进程，它最终会改变所有文件的权限。一旦以root运行，我们再次以mongod运行时，会遇到间歇性的问题。
+简单的做法是修改文件 /etc/init.d/mongo。查找下面这行：
+OPTIONS=" -f $CONFIGFILE"
+替换为以下内容：
+OPTIONS=" -f $CONFIGFILE --noIndexBuildRetry"
+
+详细步骤
+为了讨论，针对CentOS/RedHat/Amazon Linux提供了指令。
+
+1.配置“-noIndexBuildRetry”
+在所有数据节点中，增加“-noIndexBuildRetry”配置选项。
+
+2.重启所有建索引的节点
+检查每个数据服务的mongod日志文件，检查是否在建索引。如果还在建，运行命令“service mongod restrart”重启服务。
+
+3.删除未完成的索引
+一旦所有相关的节点都重启，检查所有索引列表，删除掉列表中的未完成的索引。
+
+4.移除“-noIndexBuildRetry”
+修改文件（/etc/init.d/mongod），移除第一步添加的-noIndexBuildRetry配置选项，这样我们让服务恢复到原来的默认行为，即自动继续建索引。
+祝建索引愉快！
+
+作者：黄军雷
+链接：https://www.jianshu.com/p/f9d71763e844
+來源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
