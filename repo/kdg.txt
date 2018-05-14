@@ -1,0 +1,2 @@
+centos添加源：  
+添加官网源的简便方法：yum install epel-release
