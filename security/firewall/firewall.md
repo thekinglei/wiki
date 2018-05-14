@@ -1,5 +1,7 @@
 firewall 用法
 
+说明：firewall-cmd是存在于iptables 之上的命令，底层也是iptables，通过firewall-cmd组织iptables规则
+
 1、查看当前暴露的端口和服务,关注public模块暴露的端口
 
 firewall-cmd --list-all-zones
