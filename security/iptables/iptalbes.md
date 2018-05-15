@@ -16,7 +16,7 @@ iptables -P FORWARD DROP
 iptables -P OUTPUT DROP  
 
 上边失败，修正为如下  
-规则：1、eth0端口所有网段可访问，是内网IP；2、eth1 22 、80端口可访问 3、可访问外网，如baidu.com；4、本机可访问内网；
+规则：1、eth0端口所有网卡ip内网可访问，服务可访问，是内网IP；2、eth1 22 、80端口可访问 3、可访问外网，如baidu.com；4、本机可访问内网；
 
 
 
