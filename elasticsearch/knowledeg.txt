@@ -87,3 +87,39 @@ if [ "x$ES_MAX_MEM" = "x" ]; then
     #ES_MAX_MEM=1g
     ES_MAX_MEM=2g
 fi
+
+
+
+9、检查es 搜索功能是否正常
+
+curl -XGET "http://172.17.1.2:9200/es_enterprise/_search " -d '
+{
+    "query": {
+        "bool": {
+            "must": [
+                {
+                   "term":{
+   "taglist":"居民服务修理和其他"
+}
+                },{ "multi_match": {
+        "query":                "阿里",
+        "type":                 "best_fields", 
+        "fields":               [ "companyname", "aliasname","introduction","legalperson","executiveslist","productlist","patentlist","tmlist" ],
+"operator":"and"
+    }}
+
+            ]
+        }
+    }
+}'
+
+10、检查搜索功能是否正常
+
+curl http://172.17.1.2:9200/_cluster/health/?level=shards
+
+11、elasticsearch.yml 内存占用设置
+
+bootstrap.memory_lock: true   进程锁定内存，避免进程swap导致搜索失败  
+bootstrap.mlockall: true       这个参数的目的是当你无法关闭系统的swap的时候，建议把这个参数设为true。防止在内存不够用的时候，elasticsearch的内存被交换至交换区，导致性能骤降
+
+建议用bootstrap.memory_lock   ，实践使用中会导致："cluster_name":"elasticsearch","status":"red"  这个问题 ，搜索经常失败
