@@ -1,0 +1,3 @@
+gitlab官方升级教程
+
+参考：https://gitlab.com/gitlab-org/gitlab-ce/tree/master/doc/update
