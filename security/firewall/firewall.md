@@ -35,3 +35,6 @@ firewall-cmd --add-port=8080/tcp --permanent
 重载配置  
 firewall-cmd --reload
 
+
+3、将所2-65525的端口都放开  
+firewall-cmd --add-port=2-65525/tcp --permanent
