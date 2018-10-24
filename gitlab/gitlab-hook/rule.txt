@@ -1,0 +1,2 @@
+参考官方文档：  
+https://docs.gitlab.com/ee/push_rules/push_rules.html
