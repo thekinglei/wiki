@@ -1,2 +1,7 @@
 参考官方文档：  
 https://docs.gitlab.com/ee/push_rules/push_rules.html
+
+定制gitlab-hook：
+修改：gitlab.rb
+
+## gitlab_shell['custom_hooks_dir'] = "/opt/gitlab/embedded/service/gitlab-shell/hooks"
