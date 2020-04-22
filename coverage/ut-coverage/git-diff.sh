@@ -24,5 +24,7 @@ diff-lines() {
 #执行
 #git diff ${ommit_Id1}...${Commit_Id2} |diff-lines
 #示例 git diff  02342340er...HEAD |diff-lines
+#如果只想显示添加/删除/修改的行，而不显示周围的上下文，则可以传递-U0
+#git diff  02342340er...HEAD -U0 |diff-lines
 
 
