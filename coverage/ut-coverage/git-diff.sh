@@ -28,3 +28,25 @@ diff-lines() {
 #git diff  02342340er...HEAD -U0 |diff-lines
 
 
+
+
+
+
+
+##php示例：过滤php的注释行、函数声明行（function），大括号{ 、 } 等
+
+git diff  774eae9b3c...HEAD -U0  | diff-lines | \
+grep -Ev ":-" | \
+grep -vE ":\+ {0,100}\*" | \
+grep -vE ":\+ {0,100}/\*" | \
+grep -vE "//" | \
+grep -vE "function" | \
+grep -vE ":\+ {0,100}\{ {0,100}" | \
+grep -vE ":\+ {0,100}\} {0,100}"
+
+
+
+
+
+
+
