@@ -25,4 +25,6 @@ myqr "app_apk_download_Url" -D $WORKSPACE -n app.png
 
     插件：Set build description
     
-      设置内容： <img src="${BUILD_URL}artifact/app.png" width="180" height="180" />
+      设置内容：
+      
+        Description: <img src="${BUILD_URL}artifact/app.png" width="180" height="180" />
