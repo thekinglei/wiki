@@ -6,7 +6,7 @@
 
 ##源码使用：github地址：https://github.com/sylnsfar/qrcode.git
 
-## python安装方式： pip3 install myqr
+## python安装方式： pip3 install myqr -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com 
 
 1、生成二维码
 myqr "app_apk_download_Url" -D $WORKSPACE -n app.png
