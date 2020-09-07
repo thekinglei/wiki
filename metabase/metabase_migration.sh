@@ -22,4 +22,3 @@ docker run --name metabase-migration \
     -e "MB_DB_PASS=passworkd" \
     -e "MB_DB_HOST=1.1.1.1" \
      metabase/metabase:v0.35.3  load-from-h2
-~                                               
