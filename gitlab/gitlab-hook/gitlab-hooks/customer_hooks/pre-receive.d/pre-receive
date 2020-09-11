@@ -1,0 +1,94 @@
+#!/bin/bash
+#pre-receive script
+#set -x
+declare -xr GITLAB_HOOKS_START_SCRIPT_DIRS=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+Excludes_repos="`cat ${GITLAB_HOOKS_START_SCRIPT_DIRS}/../excludes/excludes.txt`"
+validate_ref()
+{
+    # --- Arguments
+    #echo $(env)
+    oldrev=$(git rev-parse $1)
+    newrev=$(git rev-parse $2)
+    #分支号
+    refname="$3"
+    #if [ "`echo $Excludes_repos|grep `"
+    #commitList=`git rev-list $oldrev..$newrev`
+       #echo $commitList
+    EMTRY_REF="0000000000000000000000000000000000000000"
+    #delete branch：newrev=$EMTRY_REF
+    #create branch oldref=$EMTRY_REF
+    #echo "--------------"
+    #echo "oldrev is $oldrev"
+    #echo "newrev is $newrev"
+    #echo "refname is $refname"
+    #echo "--------------"
+
+    GIT_URL=`pwd|awk -F '/repositories/' '{print $2}'`
+    MAP_GIT_URL="`echo $Excludes_repos|grep "${GIT_URL}"`"
+    if [ "${MAP_GIT_URL}"X != ""X ];then
+        #白名单上的仓库不需要做邮箱、commit-msg检查
+        echo "[INFO] $MAP_GIT_URL is in white list,please go on push"
+        exit 0
+    fi
+
+    MAIL_PATTERN="qq.com"
+    PATTERN="^([F,f]ix|[U,u]pdate|[F,f]eat|[M,m]erge|[M,m]od|[A,a]dd|[D,d]el|style|refactor|perf|test|chore|[R,r]evert)"
+    EXCLUDE_FILES_TYPE="\.jar$|\.exe$"
+    if [ "${oldrev}"X = "${EMTRY_REF}"X ] ;then
+        #新增分支，添加检测,由于旧版本为空（EMTRY_REF），因此只查看最新一次提交是否是符合规范，后续考虑所有提交只查看最新提交是否复合机规范
+        commitList="${newrev}"
+    elif [ "${newrev}"X = "${EMTRY_REF}"X ];then
+        #删除分支，不做检测
+        exit 0
+        #commitList="${oldrev}"
+    else
+        #常规更新代码,获取更新id list
+        commitList=`git rev-list $oldrev..$newrev`
+        echo "execute here"
+        #新旧版本都不为空，则检查是否提交jar、exe文件
+        change_files=`git diff-tree -r $oldrev..$newrev |awk '{if($(NF-1)!="D"){print $NF}}'|sed "s/^ //g"|sed "s/ $//g"|grep -E "${EXCLUDE_FILES_TYPE}"`
+        if [ "$change_files"X != ""X ];then
+            #提交中包含禁止提交文件
+            echo "commit files contains $change_files is not satified by rule of $EXCLUDE_FILES_TYPE cannot be pushed"
+            exit 1
+        fi
+    fi
+    split=($commitList)
+    for s in ${split[@]}
+        do
+            msg=`git cat-file commit $s | sed '1,/^$/d'`
+            #commig-msg格式检查
+            match_msg="`echo ${msg}|grep -Ei "${PATTERN}"`"
+            if [ "${match_msg}"X = ""X ];then
+                echo "commit id(${s}) :Commit message is not matched to ${PATTERN}"
+                exit 1
+            fi
+            msg_email=`git cat-file commit $s |grep author|grep "${MAIL_PATTERN}"`
+            #mail-msg检查
+            if [ "${msg_email}"X = ""X ];then
+                echo "commit id(${s}) : author email is not from qq.com"
+                exit 1
+            fi
+        done
+    
+}
+
+fail=""
+
+# Allow dual mode: run from the command line just like the update hook, or
+# if no arguments are given then run as a hook script
+if [ -n "$1" -a -n "$2" -a -n "$3" ]; then
+    # Output to the terminal in command line mode - if someone wanted to
+    # resend an email; they could redirect the output to sendmail
+    # themselves
+    PAGER= validate_ref $2 $3 $1
+else
+    while read oldrev newrev refname
+    do
+        validate_ref $oldrev $newrev $refname
+    done
+fi
+
+if [ -n "$fail" ]; then
+    exit $fail
+fi

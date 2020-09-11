@@ -5,3 +5,6 @@ https://docs.gitlab.com/ee/push_rules/push_rules.html
 修改：gitlab.rb
 
 ## gitlab_shell['custom_hooks_dir'] = "/opt/gitlab/embedded/service/gitlab-shell/hooks"
+
+
+## 当前目录下的gitlab-hooks 即为自定义的hook示例
